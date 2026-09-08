@@ -1,0 +1,107 @@
+{
+  "id": "MaintenanceErrorsV1",
+  "name": "Maintenance Unexpected Error Handler",
+  "active": false,
+  "nodes": [
+    {
+      "id": "24524d3c-5577-5c11-b2e4-c43c77621f27",
+      "name": "Unexpected error trigger",
+      "type": "n8n-nodes-base.errorTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "parameters": {}
+    },
+    {
+      "id": "bd0cea1a-22a3-5839-bd93-4ecb28d00d54",
+      "name": "Sanitize error metadata",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        280,
+        0
+      ],
+      "parameters": {
+        "jsCode": "\nconst e=$input.first().json;return [{json:{trace_id:'exec-'+(e.execution?.id||'unknown'),workflow_id:String(e.workflow?.id||'unknown').slice(0,100)}}];"
+      }
+    },
+    {
+      "id": "4b7228d0-fa2e-52cb-b597-cf42a48a3ef4",
+      "name": "Record recovery and mock alert",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        560,
+        0
+      ],
+      "parameters": {
+        "method": "POST",
+        "url": "http://lab:8080/errors",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $json }}",
+        "options": {
+          "timeout": 8000,
+          "redirect": {
+            "redirect": {
+              "followRedirects": false
+            }
+          },
+          "response": {
+            "response": {
+              "responseFormat": "json"
+            }
+          }
+        }
+      },
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "LabHeaderAuthV1",
+          "name": "Synthetic Lab Header"
+        }
+      },
+      "retryOnFail": true,
+      "maxTries": 3,
+      "waitBetweenTries": 1000
+    }
+  ],
+  "connections": {
+    "Unexpected error trigger": {
+      "main": [
+        [
+          {
+            "node": "Sanitize error metadata",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Sanitize error metadata": {
+      "main": [
+        [
+          {
+            "node": "Record recovery and mock alert",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "executionTimeout": 90,
+    "saveDataSuccessExecution": "none",
+    "saveDataErrorExecution": "none",
+    "saveManualExecutions": false,
+    "saveExecutionProgress": false
+  },
+  "pinData": {},
+  "tags": [],
+  "versionId": "461573cb-9f46-5618-a5ea-6dabb017970d"
+}

@@ -1,0 +1,65 @@
+name: resident-maintenance-triage
+
+x-n8n-environment: &n8n-environment
+  N8N_ENCRYPTION_KEY: ${N8N_ENCRYPTION_KEY:?Run scripts/configure.py first}
+  N8N_DIAGNOSTICS_ENABLED: "false"
+  N8N_PERSONALIZATION_ENABLED: "false"
+  N8N_VERSION_NOTIFICATIONS_ENABLED: "false"
+  N8N_SECURE_COOKIE: "false"
+  N8N_HOST: localhost
+  N8N_USER_FOLDER: /home/node
+  N8N_PORT: "5678"
+  N8N_PROTOCOL: http
+  WEBHOOK_URL: http://localhost:5678/
+  GENERIC_TIMEZONE: America/New_York
+  TZ: America/New_York
+  NODE_FUNCTION_ALLOW_BUILTIN: crypto
+  EXECUTIONS_DATA_SAVE_ON_ERROR: none
+  EXECUTIONS_DATA_SAVE_ON_SUCCESS: none
+  EXECUTIONS_DATA_SAVE_MANUAL_EXECUTIONS: "false"
+
+services:
+  lab:
+    build:
+      context: .
+      dockerfile: lab/Dockerfile
+    environment:
+      LAB_API_KEY: ${LAB_API_KEY:?Run scripts/configure.py first}
+    ports:
+      - "127.0.0.1:8080:8080"
+    volumes:
+      - lab_data:/data
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8080/health',timeout=2)"]
+      interval: 5s
+      timeout: 3s
+      retries: 12
+
+  n8n-init:
+    image: docker.n8n.io/n8nio/n8n:${N8N_VERSION:-2.37.10}
+    entrypoint: ["/bin/sh", "/scripts/container-init.sh"]
+    environment: *n8n-environment
+    # The bootstrap reads a generated 0600 credential file then imports it into
+    # encrypted n8n storage. It runs as root only for this local initialization.
+    user: "0:0"
+    volumes:
+      - n8n_data:/home/node/.n8n
+      - ./.local:/local:ro
+      - ./scripts:/scripts:ro
+
+  n8n:
+    image: docker.n8n.io/n8nio/n8n:${N8N_VERSION:-2.37.10}
+    environment: *n8n-environment
+    ports:
+      - "127.0.0.1:5678:5678"
+    volumes:
+      - n8n_data:/home/node/.n8n
+    depends_on:
+      n8n-init:
+        condition: service_completed_successfully
+      lab:
+        condition: service_healthy
+
+volumes:
+  n8n_data:
+  lab_data:

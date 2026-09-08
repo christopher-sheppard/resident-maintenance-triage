@@ -1,0 +1,121 @@
+{
+  "id": "MockTicketsV1",
+  "name": "Mock Maintenance Ticket API",
+  "active": false,
+  "nodes": [
+    {
+      "id": "e45a091a-5152-5443-8471-cd1b352503c8",
+      "name": "Mock ticket intake",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        0
+      ],
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "mock-maintenance-ticket",
+        "authentication": "headerAuth",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "LabHeaderAuthV1",
+          "name": "Synthetic Lab Header"
+        }
+      },
+      "webhookId": "fe30e361-770d-58c1-8cc9-1c799af57288"
+    },
+    {
+      "id": "85a374e6-1d7f-50b5-ae37-4764c8eba279",
+      "name": "Idempotent mock ticket store",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        280,
+        0
+      ],
+      "parameters": {
+        "method": "POST",
+        "url": "http://lab:8080/tickets",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $json.body }}",
+        "options": {
+          "timeout": 8000,
+          "redirect": {
+            "redirect": {
+              "followRedirects": false
+            }
+          },
+          "response": {
+            "response": {
+              "responseFormat": "json"
+            }
+          }
+        }
+      },
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "LabHeaderAuthV1",
+          "name": "Synthetic Lab Header"
+        }
+      }
+    },
+    {
+      "id": "eab678f0-c64d-578d-a436-1e34f4835c89",
+      "name": "Mock ticket response",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.4,
+      "position": [
+        560,
+        0
+      ],
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ $json }}",
+        "options": {
+          "responseCode": 200
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Mock ticket intake": {
+      "main": [
+        [
+          {
+            "node": "Idempotent mock ticket store",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Idempotent mock ticket store": {
+      "main": [
+        [
+          {
+            "node": "Mock ticket response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "executionTimeout": 90,
+    "saveDataSuccessExecution": "none",
+    "saveDataErrorExecution": "none",
+    "saveManualExecutions": false,
+    "saveExecutionProgress": false
+  },
+  "pinData": {},
+  "tags": [],
+  "versionId": "1fdf943b-32e8-58f0-b606-b7a6eec3f23e"
+}
