@@ -1,0 +1,161 @@
+{
+  "generated_at": "2026-09-08T06:08:15.389088+00:00",
+  "runtime": "real n8n 2.37.10, Node.js native runtime, local SQLite mock services",
+  "model_mode": "fixture",
+  "live_claude_verified": false,
+  "docker_compose_verified": false,
+  "summary": {
+    "passed": 24,
+    "failed": 0
+  },
+  "results": [
+    {
+      "test": "Routine request through real n8n and mock ticket webhook",
+      "result": "PASS",
+      "duration_seconds": 0.877,
+      "http_status": 201,
+      "disposition": "ticket_created",
+      "ticket_id": "MOCK-A4C64313C4C1"
+    },
+    {
+      "test": "Duplicate returns existing disposition without another model call",
+      "result": "PASS",
+      "duration_seconds": 0.223
+    },
+    {
+      "test": "Changed content under reused ID is rejected",
+      "result": "PASS",
+      "duration_seconds": 0.184
+    },
+    {
+      "test": "Eight concurrent replays create one ticket",
+      "result": "PASS",
+      "duration_seconds": 1.493,
+      "simultaneous_requests": 8,
+      "tickets_created": 1
+    },
+    {
+      "test": "Missing webhook authentication rejected",
+      "result": "PASS",
+      "duration_seconds": 0.021
+    },
+    {
+      "test": "Malformed JSON rejected by n8n ingress",
+      "result": "PASS",
+      "duration_seconds": 0.03
+    },
+    {
+      "test": "Missing source event ID rejected",
+      "result": "PASS",
+      "duration_seconds": 0.319
+    },
+    {
+      "test": "Non-synthetic input rejected",
+      "result": "PASS",
+      "duration_seconds": 0.348
+    },
+    {
+      "test": "Unknown field rejected",
+      "result": "PASS",
+      "duration_seconds": 0.452
+    },
+    {
+      "test": "Unknown property rejected",
+      "result": "PASS",
+      "duration_seconds": 0.135
+    },
+    {
+      "test": "Oversized message rejected",
+      "result": "PASS",
+      "duration_seconds": 0.156
+    },
+    {
+      "test": "Stale timestamp rejected",
+      "result": "PASS",
+      "duration_seconds": 0.12
+    },
+    {
+      "test": "Gas emergency bypasses the model",
+      "result": "PASS",
+      "duration_seconds": 0.157,
+      "http_status": 202,
+      "disposition": "human_review",
+      "reason": "DETERMINISTIC_EMERGENCY"
+    },
+    {
+      "test": "Injection indicator bypasses the model",
+      "result": "PASS",
+      "duration_seconds": 0.142,
+      "http_status": 202,
+      "disposition": "human_review",
+      "reason": "PROMPT_INJECTION_INDICATOR"
+    },
+    {
+      "test": "Ambiguous model result routes to human review",
+      "result": "PASS",
+      "duration_seconds": 0.159,
+      "http_status": 202,
+      "disposition": "human_review",
+      "reason": "MODEL_POLICY_FLAG"
+    },
+    {
+      "test": "Malformed model output routes to human review",
+      "result": "PASS",
+      "duration_seconds": 0.18,
+      "http_status": 202,
+      "disposition": "human_review",
+      "reason": "MODEL_SCHEMA"
+    },
+    {
+      "test": "Model emergency cannot create a routine ticket",
+      "result": "PASS",
+      "duration_seconds": 0.302,
+      "http_status": 202,
+      "disposition": "human_review",
+      "reason": "MODEL_EMERGENCY"
+    },
+    {
+      "test": "Known PII patterns excluded from stored records",
+      "result": "PASS",
+      "duration_seconds": 0.385
+    },
+    {
+      "test": "Transient model 429 succeeds on bounded retry",
+      "result": "PASS",
+      "duration_seconds": 1.455
+    },
+    {
+      "test": "Permanent model failure retries three times then records recovery",
+      "result": "PASS",
+      "duration_seconds": 2.389,
+      "model_attempts": 3,
+      "disposition": "manual_recovery"
+    },
+    {
+      "test": "Model timeout retries three times then records recovery",
+      "result": "PASS",
+      "duration_seconds": 9.901,
+      "model_attempts": 3,
+      "disposition": "manual_recovery"
+    },
+    {
+      "test": "Ticket response lost after commit does not duplicate the ticket",
+      "result": "PASS",
+      "duration_seconds": 1.487,
+      "disposition": "ticket_created",
+      "tickets_created": 1
+    },
+    {
+      "test": "Ticket API failure preserves checkpoint and recovery record",
+      "result": "PASS",
+      "duration_seconds": 2.912
+    },
+    {
+      "test": "Unexpected error triggers linked workflow and supports reconciliation",
+      "result": "PASS",
+      "duration_seconds": 3.337,
+      "error_workflow": "automatic trigger observed",
+      "recovery": "existing ticket reconciled without creating another"
+    }
+  ]
+}

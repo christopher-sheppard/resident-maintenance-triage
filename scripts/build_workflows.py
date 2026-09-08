@@ -29,7 +29,7 @@ def code(name, src, x, y, policy=False):
 
 def condition(name, expr, x, y):
     return node(name, 'if', {'conditions': {'options': {'caseSensitive': True, 'leftValue': '', 'typeValidation': 'strict', 'version': 2},
-        'conditions': [{'id': str(uuid.uuid4()), 'leftValue': expr, 'rightValue': True, 'operator': {'type': 'boolean', 'operation': 'true', 'singleValue': True}}],
+        'conditions': [{'id': str(uuid.uuid5(uuid.NAMESPACE_URL, 'condition/' + name)), 'leftValue': expr, 'rightValue': True, 'operator': {'type': 'boolean', 'operation': 'true', 'singleValue': True}}],
         'combinator': 'and'}, 'options': {}}, x, y, 2.2)
 
 

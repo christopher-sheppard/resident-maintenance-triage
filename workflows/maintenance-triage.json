@@ -59,7 +59,7 @@
           },
           "conditions": [
             {
-              "id": "9764a345-00b7-4b3b-8cd5-b90cd3c5913e",
+              "id": "7e7b7d2c-5217-56e5-a7b7-92574d1e399c",
               "leftValue": "={{ $json.valid }}",
               "rightValue": true,
               "operator": {
@@ -161,7 +161,7 @@
           },
           "conditions": [
             {
-              "id": "098dcb65-cd62-43cd-b12f-46e466509ec5",
+              "id": "799c9bfa-aadd-5ee1-ba1d-bb075143ab5d",
               "leftValue": "={{ $json.state_ok }}",
               "rightValue": true,
               "operator": {
@@ -195,7 +195,7 @@
           },
           "conditions": [
             {
-              "id": "ceb5afde-ae20-49e4-bece-2b60e2a6c399",
+              "id": "2a2c3fa4-a45a-58ea-9beb-4e3631140691",
               "leftValue": "={{ $json.acquired }}",
               "rightValue": true,
               "operator": {
@@ -242,7 +242,7 @@
           },
           "conditions": [
             {
-              "id": "012c000c-144a-4480-93a1-dcf8e7ca51bb",
+              "id": "880993fb-a765-59d7-a117-c823d4341c57",
               "leftValue": "={{ $json.outcome === \"classify\" }}",
               "rightValue": true,
               "operator": {
@@ -289,7 +289,7 @@
           },
           "conditions": [
             {
-              "id": "d62f2c58-d6fa-48e6-937a-7ebae59d7901",
+              "id": "b3b88558-1541-568f-af22-f9babe118fb6",
               "leftValue": "={{ $json.config.live_claude }}",
               "rightValue": true,
               "operator": {
@@ -429,7 +429,7 @@
           },
           "conditions": [
             {
-              "id": "7c075068-1c02-4317-a994-b4eac82da6e9",
+              "id": "d1c8e1e1-ea99-5ca7-9921-9a3a26f19807",
               "leftValue": "={{ $json.outcome === \"ticket_created\" }}",
               "rightValue": true,
               "operator": {
@@ -518,7 +518,7 @@
           },
           "conditions": [
             {
-              "id": "6143e0c3-f6ae-474f-b3d8-cf484078419c",
+              "id": "a9f27274-7e48-5095-a106-fc3b87f62d87",
               "leftValue": "={{ $json.state_ok }}",
               "rightValue": true,
               "operator": {
@@ -675,7 +675,7 @@
           },
           "conditions": [
             {
-              "id": "0d1866c9-4410-4ac8-b441-b7c3949438f8",
+              "id": "752288b7-b341-5079-9c17-3760f31847ca",
               "leftValue": "={{ $json.state_ok }}",
               "rightValue": true,
               "operator": {

@@ -4,7 +4,6 @@ import json
 import os
 from pathlib import Path
 import subprocess
-import shutil
 import sys
 import time
 import urllib.request
@@ -18,6 +17,9 @@ parser.add_argument('--test', action='store_true', help='Run the integration sui
 parser.add_argument('--refresh', action='store_true', help='Reimport source workflows into this lab; preserves credentials')
 args = parser.parse_args()
 command_prefix = ['node', args.n8n_script] if args.n8n_script else [args.n8n]
+version=subprocess.run(command_prefix+['--version'],capture_output=True,text=True,check=True).stdout.strip()
+if version!='2.37.10':
+    raise SystemExit('Use the project-pinned n8n 2.37.10 runtime for this release.')
 subprocess.run([sys.executable, str(ROOT/'scripts/configure.py'), '--native'], check=True)
 env = os.environ.copy()
 env.update(dict(line.split('=',1) for line in (ROOT/'.env').read_text().splitlines() if '=' in line and not line.startswith('#')))

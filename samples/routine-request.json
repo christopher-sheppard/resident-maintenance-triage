@@ -1,0 +1,9 @@
+{
+  "source_event_id": "SAMPLE-ROUTINE-001",
+  "property_id": "PROP-DEMO-001",
+  "unit": "2B",
+  "message": "Water leaking beneath the kitchen sink.",
+  "contact_preference": "none",
+  "submitted_at": "2026-09-08T15:00:00Z",
+  "synthetic": true
+}

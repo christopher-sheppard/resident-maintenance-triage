@@ -1,0 +1,35 @@
+{
+  "build_date": "2026-09-08",
+  "runtime_versions": {
+    "n8n": "2.37.10",
+    "node": "24.19.0",
+    "python": "3.12.13"
+  },
+  "integration_tests": {
+    "passed": 24,
+    "failed": 0,
+    "model_mode": "fixture"
+  },
+  "policy_test_groups": {
+    "passed": 6,
+    "failed": 0
+  },
+  "live_claude_api_verified": false,
+  "docker_compose_executed": false,
+  "windows_or_macos_executed": false,
+  "remote_github_published": false,
+  "files": {
+    "src/policy.cjs": "6e5b6d169f4348c95ff16bb757a1b22b25b9c1952779a8d9ddef31ab1d793e2e",
+    "src/nodes/finish_payload.js": "bb431b2d8a021e71e46d8c17a711cc16ef36bdc26a503df3f722afe7a98f6edb",
+    "src/nodes/validate.js": "591e36fbb9a8d160153d9ec5291972187bb2eb369a6f78c16d6d7b87605eb584",
+    "src/nodes/model_request.js": "15284dd45ed7fd63e34e229058e2985287c283a705a7e625389f78171ca4c324",
+    "src/nodes/privacy.js": "44844459ae700be2ac310a6c0b7004864a2c401627d7f3a64c8d2988b4ffc3d1",
+    "src/nodes/safety.js": "56e08aaa96253705de97415b0ce7416d06e646ad87c7eabb74fff1c9cc446e3c",
+    "src/nodes/model_validate.js": "3b981353d7edcb8dfcbaedc66e7fabd8b9327e4275eea9c09942e2837e9681d4",
+    "lab/Dockerfile": "c266fcb895c19d2a3db3d895630e558efdc86651648483de4008979f4768ff4d",
+    "lab/server.py": "3d3cc40d5545a367791cbf32ecc6677e7f53cdcbb20a654093d6a791fbc3895e",
+    "workflows/maintenance-triage.json": "01d27c46992dc9dfb9e7c0d6bca56c05ed1592c397248a4738b0e494fce6303d",
+    "workflows/mock-ticket-api.json": "40a84ea38bd838d26a4e18423696c31ced4fa1cf321ce132908b1b7ab75aa15b",
+    "workflows/maintenance-error-handler.json": "064272960d6a09366c8206ebc9ab9f4388ea0ac7de267ac0883c7150821e534f"
+  }
+}

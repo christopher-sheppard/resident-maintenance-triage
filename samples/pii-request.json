@@ -1,0 +1,10 @@
+{
+  "source_event_id": "SAMPLE-PII-001",
+  "property_id": "PROP-DEMO-001",
+  "unit": "2B",
+  "message": "Alex Example reports a sink leak. Email alex@example.invalid or call 202-555-0123.",
+  "contact_preference": "none",
+  "submitted_at": "2026-09-08T15:00:00Z",
+  "synthetic": true,
+  "resident_name": "Alex Example"
+}
