@@ -1,6 +1,6 @@
 # Walk the canvas from intake to response
 
-| Node or decision | What to explain in the interview |
+| Node or decision | Responsibility |
 | --- | --- |
 | 01 Authenticated maintenance intake | A POST webhook starts one execution. Header Auth rejects callers without the local lab credential. |
 | 02 Validate and trace | Explicit fields, supported property, size, types, synthetic marker, and time window. A trace ID ties the request to the execution. This node also owns trusted configuration. |

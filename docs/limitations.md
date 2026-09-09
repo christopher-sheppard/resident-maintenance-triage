@@ -13,7 +13,7 @@
 
 ## What the tests do not prove
 
-1. **Claude model quality:** the 24 integration scenarios used fixtures. No live API call, accuracy benchmark, precision/recall evaluation, or model-output distribution was measured.
+1. **Claude model quality:** the 24 integration scenarios used fixtures. The separate live demonstrations establish working API integration for those examples, not an accuracy benchmark, precision/recall evaluation, or model-output distribution.
 2. **Complete emergency detection:** regex rules are examples, not a reviewed emergency policy. They can miss paraphrases and trigger on negations or harmless context. A real system needs domain-approved escalation rules and human coverage.
 3. **Complete anonymization:** masking covers configured email, telephone, government-ID, payment-number, supplied-name, and limited name-introduction patterns. It will not detect every name, address, language, or identifier. Synthetic data only.
 4. **Prompt-injection immunity:** the precheck covers selected patterns. Prompt separation, no model tools, strict output checks, and human-review routing limit impact; a regex is not a complete attack detector.
@@ -31,5 +31,5 @@
 
 Use a tenant-scoped database key, reviewed schema, transactional outbox, vendor-specific idempotency strategy, lease ownership and replay controls, role-based access, TLS/secret rotation, production monitoring and backup recovery. Establish review ownership and escalation SLAs with the people doing the work. Measure routing quality and business outcomes on approved data before rollout.
 
-These are future requirements and interview discussion points, not completed project features.
+These are future requirements for a future deployment, not completed project features.
 

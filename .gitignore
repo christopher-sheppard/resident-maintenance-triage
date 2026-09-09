@@ -8,3 +8,8 @@ __pycache__/
 .DS_Store
 evidence/local-*
 
+
+# Browser "Save page" artifacts are not project documentation.
+/docs/*_files/
+/docs/n8n-workflow.html
+/docs/n8n-workflow.htm

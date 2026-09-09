@@ -2,11 +2,9 @@
 
 An n8n proof lab that turns synthetic maintenance requests into validated mock tickets, human-review records, or recoverable failures.
 
-**Status:** three importable workflows executed on n8n 2.37.10. The integration suite passed 24 scenarios using deterministic model fixtures; six rule-test groups also passed. Chris subsequently verified live Claude classification through mock ticket creation, emergency bypass, and duplicate replay on his Linux computer. See [live demonstration evidence](evidence/live-claude-results.md) for provenance and outcomes. The repository still defaults to fixture mode. No real Zendesk, Yardi, resident, or employer systems are connected.
+**Status:** three importable workflows executed on n8n 2.37.10. The integration suite passed 24 scenarios using deterministic model fixtures; eight JavaScript tests also passed (six policy tests and two model-request contract tests). Chris subsequently verified live Claude classification through mock ticket creation, emergency bypass, and duplicate replay on his Linux computer. See [live demonstration evidence](evidence/live-claude-results.md) for provenance and outcomes. The repository still defaults to fixture mode. No real Zendesk, Yardi, resident, or employer systems are connected.
 
-[Start here](START_HERE.md) · [Architecture](docs/architecture.md) · [Node walkthrough](docs/node-walkthrough.md) · [Evidence](evidence/integration-results.json) · [Runbook](docs/runbook.md) · [Interview demo](docs/interview-demo.md)
-
-![Architecture of the synthetic maintenance triage workflow](docs/architecture.svg)
+[Setup](docs/setup.md) · [Architecture](docs/architecture.md) · [Node walkthrough](docs/node-walkthrough.md) · [Test evidence](evidence/README.md) · [Runbook](docs/runbook.md) · [Try the demo](docs/demo.md)
 
 ## Workflow screenshot
 
@@ -33,7 +31,7 @@ The workflow calls the model once for eligible requests, with bounded retries on
 
 Use Node.js 24 and Python 3.10 or newer. The verified development runtime was Node.js 24.19.0, Python 3.12.13, and n8n 2.37.10 on Linux. Windows and macOS commands are provided; those operating systems were not tested in this build.
 
-From the unzipped project directory:
+From the repository root:
 
 ```bash
 npm install --prefix .local/n8n n8n@2.37.10 --no-audit --no-fund
@@ -105,7 +103,8 @@ Use [the live validation checklist](docs/live-claude-checklist.md) before descri
 ## Tests and source
 
 ```bash
-node --test tests/policy.test.cjs
+node --test tests/policy.test.cjs tests/model-request.test.cjs
+python3 scripts/verify_exports.py
 python3 scripts/run_native.py --test --n8n-script .local/n8n/node_modules/n8n/bin/n8n
 ```
 

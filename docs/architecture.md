@@ -1,5 +1,7 @@
 # Architecture and trust boundaries
 
+[Open the architecture figure](architecture.svg) · [Actual n8n canvas](n8n-workflow.png)
+
 ```mermaid
 flowchart TD
     A[Authenticated webhook] --> B{Input valid?}

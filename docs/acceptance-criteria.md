@@ -13,5 +13,5 @@ This is an independent synthetic proof lab. It does not represent an employer's 
 - Human-review and recovery queues are real records; notifications are explicitly a local mock outbox.
 - The error workflow handles unexpected production-webhook failures without copying raw error text or stack traces.
 - Repeatable fixtures cover the happy path and adverse paths. Live Claude evidence is reported separately.
-- Workflow JSON, source, setup, requirements, diagrams, evidence, runbook, and interview notes are versioned.
+- Workflow JSON, source, setup, requirements, diagrams, evidence, runbook, and demo instructions are versioned.
 

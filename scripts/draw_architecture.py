@@ -10,7 +10,7 @@ parts=['''<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="1500" vie
 <text x="65" y="65" class="title">Resident Maintenance Triage</text>
 <text x="65" y="100" class="sub">n8n orchestration · atomic state · bounded classification · human review</text>
 <rect x="65" y="121" width="1150" height="42" rx="10" fill="#e8edf5"/>
-<text x="85" y="148" class="detail">Synthetic proof lab. Model fixtures verified; live Claude credential setup remains.</text>''']
+<text x="85" y="148" class="detail">Synthetic lab. Fixture default; live Claude integration demonstrated separately.</text>''']
 
 def box(x,y,w,title,lines,fill='#ffffff',stroke='#b7c7d8',h=90):
     parts.append(f'<rect x="{x}" y="{y}" width="{w}" height="{h}" rx="14" fill="{fill}" stroke="{stroke}" stroke-width="2"/>')

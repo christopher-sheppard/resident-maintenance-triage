@@ -1,8 +1,23 @@
 # Setup details
 
+## Start locally
+
+From the repository root, with Node.js 24 and Python 3.10 or newer:
+
+```bash
+npm install --prefix .local/n8n n8n@2.37.10 --no-audit --no-fund
+python3 scripts/run_native.py --n8n-script .local/n8n/node_modules/n8n/bin/n8n
+```
+
+Wait for **Lab ready**, then open `http://localhost:5678`. Complete the local n8n owner login if prompted. Keep the terminal open; use another terminal for [demo requests](demo.md). No n8n Cloud account or paid API credential is needed for fixture mode.
+
+Press Ctrl+C to stop the lab. Start it again with the same command; your local configuration and data persist. Avoid `--refresh` during normal restarts because it replaces workflow definitions, including editor changes. Ports 5678 and 8080 must be free before startup.
+
+On Windows, substitute `python` for `python3`. Linux is the tested platform; Windows and macOS launch instructions have not been verified here.
+
 ## Verified native path
 
-See `START_HERE.md`. Validation used the actual n8n 2.37.10 runtime on Linux, with Node 24.19.0 and Python 3.12.13. The native runner starts child processes together and binds them to loopback only. No Docker engine was available in the build environment.
+Validation used the actual n8n 2.37.10 runtime on Linux, with Node 24.19.0 and Python 3.12.13. The native runner starts child processes together and binds them to loopback only. No Docker engine was available in the build environment.
 
 Native state and secrets are in `.local/` and `.env`. The bootstrap imports the exported workflows into its own n8n database. It does not alter another instance. IDs are stable within this lab; avoid importing the same IDs into an unrelated instance without reviewing them.
 
@@ -10,7 +25,7 @@ The initial **Claude API Key** credential contains a nonfunctional placeholder. 
 
 ## Docker Compose alternative
 
-The Compose file is provided and its configuration was statically reviewed. **It was not executed in the build environment.** Prefer the verified native path for the first rehearsal unless Docker is already working on your machine.
+The Compose file is provided and its configuration was statically reviewed. **It was not executed in the build environment.** Use the native path first; Docker is optional.
 
 Install Docker Desktop from the official Docker website, start it, and use:
 
@@ -34,7 +49,7 @@ The initialization container imports credentials and publishes all three workflo
 
 The workflow logic uses standard nodes, but the default exports target local mock services. A Cloud instance cannot reach `localhost` on your laptop. To move this version to Cloud, host the mock service behind authenticated HTTPS, change the two service URLs in node 02 and the supporting workflows, configure credentials, import all three workflows, relink the error workflow if its ID changes, and publish all three.
 
-That hosting work is optional for this interview. The public GitHub repository can contain the exports and evidence without an always-on endpoint.
+That hosting work is optional for this local demo. The public GitHub repository can contain the exports and evidence without an always-on endpoint.
 
 ## Troubleshooting
 

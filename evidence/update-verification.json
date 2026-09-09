@@ -5,23 +5,6 @@
     "node": "24.19.0",
     "n8n_installed": "2.37.10"
   },
-  "supplied_update": {
-    "files": 6,
-    "all_sha256_verified": true,
-    "all_merged_files_match_manifest": true,
-    "changed_workflow_nodes": [
-      "09 Build bounded model request"
-    ],
-    "topology_changed": false,
-    "received_payload_sha256": {
-      "src/nodes/model_request.js": "f1684bebe2f7b840f98e26112c1744d4349fcdd6b9bae639b14eb9a78cecd02d",
-      "workflows/maintenance-triage.json": "9c55f02ce5cc8e291ff57c3b19cba79a1604515c2149c3f0069cbdb30ed5ef91",
-      "README.md": "4f015f87c83a16871cefdb40d5cecd2eb72fc791e24a4870cd3025dfb1f8e79b",
-      "docs/resume-handoff.md": "66947367ac856f9fc4b381d054f1e57f240dc6f27226d7547d8483d4bebc2940",
-      "docs/live-claude-checklist.md": "f2daa58b8def7f692cc345993544a6958b513fadb6394a8e1ab52c4818a4233f",
-      "evidence/live-claude-results.md": "60a966901bb951ff22773dff6c808df761e28500abcfc1e29e05f31798064245"
-    }
-  },
   "local_tests": {
     "command": "node --test tests/policy.test.cjs tests/model-request.test.cjs",
     "existing_policy_tests": 6,
@@ -42,50 +25,7 @@
     "live_request_objects_equal": true,
     "method": "VM evaluation of generated node09 versus saved published node09; synthetic input; no network calls"
   },
-  "recorded_integration_evidence": {
-    "original_build": {
-      "generated_at": "2026-09-08T06:08:15.389088+00:00",
-      "passed": 24,
-      "failed": 0
-    },
-    "existing_machine_report": {
-      "generated_at": "2026-09-08T19:00:47.921090+00:00",
-      "passed": 24,
-      "failed": 0
-    },
-    "rerun_during_update": false,
-    "updated_fix_isolated_suite": "Reported as 24 passing in the supplied HERMES_NEXT_STEPS handoff; no separate run log supplied and not independently rerun here"
-  },
-  "live_evidence": {
-    "source": "live-claude-results.md",
-    "provenance": "User-observed live demonstrations reviewed by Codex, not API calls executed in this update session",
-    "saved_outcomes_corroborated": [
-      "exec-46",
-      "exec-48",
-      "exec-49"
-    ]
-  },
-  "preservation": {
-    "saved_workflows_unchanged": true,
-    "saved_credentials_unchanged": true,
-    "protected_runtime_files_changed": 0,
-    "saved_live_mode_preserved": true,
-    "restart_reimport_refresh_performed": false
-  },
-  "publication_derivative": {
-    "received_hash_scope": "Supplied payload merged into original workspace, not the final public-document variants",
-    "documentation_changes": [
-      "README.md and START_HERE.md specify Node 24, consistent with installed n8n package engines >=24.0.0",
-      "docs/resume-handoff.md omits private application-targeting guidance; complete local handoff is retained outside this source snapshot",
-      "GitHub handoff and start guide distinguish this source-only snapshot from the separate original Git-history bundle."
-    ]
-  },
-  "verification_scope": {
-    "native_source_checks_passed": true,
-    "docker_is_required_gate": false,
-    "docker_status": "blocked before build, container tests, or readiness checks",
-    "full_workspace_verification_passed": false,
-    "new_native_integration_run_performed": false,
-    "rationale": "Project setup documentation defines Docker Compose as an alternative; this source-only update uses the existing native Python export checker and JavaScript tests. Additional routing/state/API changes would require an isolated real-n8n fixture run."
-  }
+  "evidence_scope": "Historical source-update checks, not a new integration run or a checksum manifest for subsequent documentation edits.",
+  "integration_suite_rerun_during_update": false,
+  "docker_executed": false
 }
