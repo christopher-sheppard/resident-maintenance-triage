@@ -2,13 +2,13 @@
 
 ## Repository status
 
-This build has a local Git history and an archive of the project. It has not been pushed to a remote repository. No existing repository was visible through the connected GitHub account during this build.
+This source snapshot contains the reviewed public files, not a Git checkout. The original development history remains in the project owner’s separately supplied `project-history.bundle`. No remote publication is claimed.
 
 Suggested repository name: `resident-maintenance-triage`.
 
 ## Preserve the actual development history
 
-The downloadable archive includes `project-history.bundle` alongside the project folder. In the directory containing that bundle:
+The original starter kit includes `project-history.bundle`; this public-source-only snapshot intentionally excludes Git history. Review that original history for private material before publication. In the directory containing the separately supplied bundle:
 
 ```bash
 git clone project-history.bundle resident-maintenance-triage-git

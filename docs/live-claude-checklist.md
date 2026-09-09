@@ -1,6 +1,6 @@
 # Verify the live Claude branch
 
-**Build-time status: not verified with a live API credential.** The provided integration evidence uses a fixture service. Do not turn that evidence into a Claude accuracy claim.
+**Updated status:** Chris verified live routine classification, emergency bypass, and duplicate replay; see [the recorded results](../evidence/live-claude-results.md). The 24 integration scenarios use a fixture service and remain separate evidence. Neither set establishes Claude accuracy.
 
 ## Connect
 

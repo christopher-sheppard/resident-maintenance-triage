@@ -2,7 +2,7 @@
 
 An n8n proof lab that turns synthetic maintenance requests into validated mock tickets, human-review records, or recoverable failures.
 
-**Status:** three importable workflows executed on n8n 2.37.10. The integration suite passed 24 scenarios using deterministic model fixtures; six rule-test groups also passed. The real Claude API branch is implemented but has **not** been exercised with a paid API credential. No real Zendesk, Yardi, resident, or employer systems are connected.
+**Status:** three importable workflows executed on n8n 2.37.10. The integration suite passed 24 scenarios using deterministic model fixtures; six rule-test groups also passed. Chris subsequently verified live Claude classification through mock ticket creation, emergency bypass, and duplicate replay on his Linux computer. See [live demonstration evidence](evidence/live-claude-results.md) for provenance and outcomes. The repository still defaults to fixture mode. No real Zendesk, Yardi, resident, or employer systems are connected.
 
 [Start here](START_HERE.md) · [Architecture](docs/architecture.md) · [Node walkthrough](docs/node-walkthrough.md) · [Evidence](evidence/integration-results.json) · [Runbook](docs/runbook.md) · [Interview demo](docs/interview-demo.md)
 
@@ -25,7 +25,7 @@ The workflow calls the model once for eligible requests, with bounded retries on
 
 ## Start locally
 
-Use Node.js 22 or 24 and Python 3.10 or newer. The verified development runtime was Node.js 24.19.0, Python 3.12.13, and n8n 2.37.10 on Linux. Windows and macOS commands are provided; those operating systems were not tested in this build.
+Use Node.js 24 and Python 3.10 or newer. The verified development runtime was Node.js 24.19.0, Python 3.12.13, and n8n 2.37.10 on Linux. Windows and macOS commands are provided; those operating systems were not tested in this build.
 
 From the unzipped project directory:
 

@@ -13,7 +13,7 @@ node --version
 python3 --version
 ```
 
-On Windows, use `python --version`. Use Node 22 or 24 and Python 3.10 or newer. If a command is missing, install that runtime from its official website before continuing. You already use Node for app development; check the installed version before installing another copy.
+On Windows, use `python --version`. Use Node 24 and Python 3.10 or newer. If a command is missing, install that runtime from its official website before continuing. You already use Node for app development; check the installed version before installing another copy.
 
 ## 2. Install the pinned n8n version
 
@@ -75,7 +75,7 @@ Follow `docs/interview-demo.md`. Practice routine intake, emergency bypass, dupl
 
 ## 7. Put the project in GitHub
 
-Follow `docs/github-handoff.md`. The archive includes a Git history bundle if you want to preserve the actual development commits. Upload source, workflow exports, documentation, and sanitized evidence. Keep `.env`, `.local`, databases, raw logs, and credentials out of Git.
+Follow `docs/github-handoff.md`. The original starter kit includes a Git history bundle; this public-source-only snapshot does not. Review the original history before publication and preserve the actual authorship. Upload source, workflow exports, documentation, and sanitized evidence. Keep `.env`, `.local`, databases, raw logs, and credentials out of Git.
 
 The final résumé wording depends on whether you completed live Claude verification. Use `docs/resume-handoff.md` to give Claude accurate facts.
 

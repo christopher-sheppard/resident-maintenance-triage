@@ -1,0 +1,17 @@
+{
+  "recipe": "docker-compose project",
+  "ok": false,
+  "phases": [
+    {
+      "phase": "build",
+      "command": "docker compose build",
+      "exitCode": 1,
+      "duration": 0.0,
+      "ok": false,
+      "timedOut": false,
+      "outputTail": "Refusing to run: docker compose ps failed (exit 1): permission denied while trying to connect to the docker API at unix:///var/run/docker.sock. `docker compose build` + `up` would replace live containers on an image-hash change, destroying any container-local state they carry. If you intend to rebuild this live deployment, run `docker compose build`/`up` yourself."
+    }
+  ],
+  "readiness": null,
+  "source": "detected"
+}
