@@ -8,6 +8,12 @@ An n8n proof lab that turns synthetic maintenance requests into validated mock t
 
 ![Architecture of the synthetic maintenance triage workflow](docs/architecture.svg)
 
+## Workflow screenshot
+
+![Resident maintenance triage workflow in n8n](docs/n8n-workflow.png)
+
+Actual n8n workflow overview. The repository defaults to simulated classification, with optional live Claude.
+
 ## The business problem
 
 Manual service intake requires staff to read messages, recognize urgent situations, fill in ticket fields, remove duplicates, and follow up when integrations fail. This lab demonstrates how to automate the repeatable work while preserving human review and a traceable outcome.
