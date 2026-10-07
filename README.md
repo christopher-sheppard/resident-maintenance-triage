@@ -108,7 +108,7 @@ python3 scripts/verify_exports.py
 python3 scripts/run_native.py --test --n8n-script .local/n8n/node_modules/n8n/bin/n8n
 ```
 
-The second command starts and stops the native lab itself; stop a separately running native lab first. Its integration tests enable temporary faults in the local mocks. Run them before rehearsal, then use the normal demo commands. Results are written to `evidence/integration-results.json`.
+The `run_native.py --test` command starts and stops the native lab itself; stop a separately running native lab first. Its integration tests enable temporary faults in the local mocks. Run them before rehearsal, then use the normal demo commands. Results are written to `evidence/integration-results.json`.
 
 JavaScript business rules live in `src/policy.cjs`; node-specific code lives in `src/nodes`. The deterministic generator `scripts/build_workflows.py` produces standalone n8n JSON exports. You can inspect every rule without reading a large escaped JSON string.
 
